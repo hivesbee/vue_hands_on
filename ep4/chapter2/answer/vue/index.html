@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+  <title>ep4 capter2 answer (vue)</title>
+</head>
+<body>
+  <div id="app">
+    <h1>宛先リスト</h1>
+    <input type="text" v-model="newContact">
+    <button type="button" @click="addContact()">add contact</button>
+    <ul>
+      <li v-for="(contact, i) in contacts">
+        <span>{{ contact }}</span><button type="button" @click="removeContact(i)">Delete</button>
+      </li>
+    </ul>
+  </div>
+
+  <script>
+    var app = new Vue({
+      el: '#app',
+      data: {
+        newContact: '',
+        contacts: []
+      },
+      methods: {
+        addContact: function() {
+          this.contacts.push(this.newContact);
+          this.newContact = '';
+        },
+        removeContact: function(i) {
+          this.contacts.splice(i, 1);
+        }
+      }
+    })
+  </script>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+  <title>01_hello_world_answer</title>
+</head>
+<body>
+  <div id="app">
+    <span>
+      {{ message }}
+    </span>
+  </div>
+
+  <script>
+    var app = new Vue({
+      el: '#app',
+      data: {
+        message: 'Hello Vue!'
+      }
+    })
+  </script>
+</body>
+</html>
+<!--
+  " そのままタグに書けばいいじゃない " と思った方、こらえてください。
+  Vue.js は html を " データを出力するテンプレート " として扱っているためこんな感じになります。
+
+  ここの大事なこと
+  - Vue では DOM とデータがバインディングされるよ
+  - リアクティブに変化するよ
+    画面からは変化させられないけど , デバックコンソールから値を変更すると… ?
+    ( app.$data.message = 'hoge' )
+-->
