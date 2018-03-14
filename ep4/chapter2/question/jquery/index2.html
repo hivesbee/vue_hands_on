@@ -5,42 +5,31 @@
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
           integrity="sha256-3edrmyuQ0w65f8gfBsqowzjJe2iM6n0nKciPUp8y+7E="
           crossorigin="anonymous"></script>
-  <title>ep4 chapter2 answer (jquery)</title>
+  <title>ep4 chapter2 question (jquery)</title>
 </head>
 <body>
   <h1>宛先リスト</h1>
   <input class="js-input-contact" type="text" placeholder="email">
   <button class="js-button-add-contact" type="button">add contact</button>
-  <ul class="js-contact-list"></ul>
+  <ul class="js-contact-list">
+    <!--
+      ↓ のような DOM が「 add contact 」 をクリックしたときに追加されるイメージ
+    <li>
+      <span>hoge@fuga.bom</span>
+      <button class="js-button-delete-contact" type="button">Delete</button>
+    </li>
+    -->
+  </ul>
 
   <script>
     $(function() {
       // 「 add contact 」ボタンクリック時の処理
       $('.js-button-add-contact').on('click', function () {
-        // 連絡先が入った DOM 生成
-        var email = $('<span>', {
-          text: $('.js-input-contact').val()
-        });
-
-        // 宛先を削除する button 生成
-        var button = $('<button>', {
-          class: 'js-button-delete-contact',
-          type: 'button',
-          text: 'Delete'
-        });
-
-        // 上記 2 つをまとめてリストに追加
-        var item = $('<li>').append(email).append(button);
-        $('.js-contact-list').append(item);
-
-        // 入力されていた内容はクリア
-        $('.js-input-contact').val('');
+        // 入力した値が入った DOM を追加する処理
       });
 
       // 追加した連絡先にある「 Delete 」ボタンクリック時の処理
       $('ul').on('click', '.js-button-delete-contact', function () {
-        // 親 DOM をたどって li タグごと削除
-        $(this).parent().remove();
       });
     });
   </script>
