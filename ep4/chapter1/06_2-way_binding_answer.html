@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+  <title>06_2-way_binding_answer</title>
+</head>
+<body>
+  <div id="app">
+    <span v-if="seen" v-bind:title="titleMessage">
+      {{ message }}
+    </span>
+    <button v-on:click="reverseMessage">reverse</button> <!-- ここ追加 -->
+    <ol>
+      <li v-for="todo in todos">
+        {{ todo.text }}
+      </li>
+    </ol>
+
+    <input type="text" v-model="message">
+  </div>
+
+  <script>
+    var app = new Vue({
+      el: '#app',
+      data: {
+        message: 'Hello Vue!',
+        titleMessage: 'You loaded this page on ' + new Date().toLocaleString(),
+        seen: true,
+        todos: [
+          { text: 'Learn JavaScript' },
+          { text: 'Learn Vue' },
+          { text: 'Build something awesome' }
+        ]
+      },
+      methods: {
+        reverseMessage: function () {
+          this.message = this.message.split('').reverse().join('')
+        }
+      }
+    })
+  </script>
+</body>
+</html>
+<!--
+  ここの大事なこと
+  - `v-on` でイベントリスナをテンプレートに定義できるよ
+  - DOM 操作をおこなっていないよ
+  - DOM 操作 ( = 見た目の管理 ) を Vue でやってくれているので
+    ロジックだけ集中してやれるよ ( 実際 reverseMessage はロジックしか書いていないよね )
+    jquery と違って JQUERY と違って
+
+  - ちなみに `v-on:click` は `@click` というショートハンドがあるよ
+-->
