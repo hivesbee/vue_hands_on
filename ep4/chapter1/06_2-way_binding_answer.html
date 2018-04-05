@@ -10,14 +10,14 @@
     <span v-if="seen" v-bind:title="titleMessage">
       {{ message }}
     </span>
-    <button v-on:click="reverseMessage">reverse</button> <!-- ここ追加 -->
+    <button v-on:click="reverseMessage">reverse</button>
     <ol>
       <li v-for="todo in todos">
         {{ todo.text }}
       </li>
     </ol>
 
-    <input type="text" v-model="message">
+    <input type="text" v-model="message">  <!-- ここ追加 -->
   </div>
 
   <script>
